@@ -1,14 +1,12 @@
 buildscript {
   ext {
-    kotlin_version = '1.0.5-2'
+    kotlin_version = '1.0.6'
     vertx_version = '3.3.3'
+    kmongo_version = '3.3.5'
   }
 
   repositories {
     jcenter()
-//    maven {
-//      url "https://oss.sonatype.org/content/repositories/iovertx-3295"
-//    }
   }
 
   dependencies {
@@ -27,7 +25,7 @@ apply plugin: 'kotlin'
 sourceCompatibility = '1.8'
 
 mainClassName = 'io.vertx.core.Launcher'
-def mainVerticleName = 'io.vertx.example.MainVerticle'
+def mainVerticleName = 'com.slickqa.slicker.SlickerVerticle'
 
 repositories {
   jcenter()
@@ -38,9 +36,11 @@ repositories {
 dependencies {
   compile "io.vertx:vertx-core:$vertx_version"
   compile "io.vertx:vertx-web:$vertx_version"
+  compile "io.vertx:vertx-auth-jwt:$vertx_version"
 
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   compile "org.jetbrains.kotlin:kotlin-runtime:$kotlin_version"
+  compile "org.litote.kmongo:kmongo-async:$kmongo_version"
 }
 
 // Redeploy watcher.

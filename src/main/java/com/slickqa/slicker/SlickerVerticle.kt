@@ -50,9 +50,10 @@ class SlickerVerticle : AbstractVerticle() {
             if(httpResponse.statusCode() == 200) {
                 httpResponse.bodyHandler({
                     val realmConfig = JsonObject(it.toString())
-                    val JwtConfig = JsonObject()
-                            .put("public-key", realmConfig.getString("public_key"))
-                            .put("permissionsClaimKey", "realm_access/roles")
+                    val JwtConfig = json(
+                            "public-key" to realmConfig.getString("public_key"),
+                            "permissionsClaimKey" to "realm_access/roles"
+                    )
                     val jwtAuth = SlickJWTAuthImpl(vertx, JwtConfig)
                     router.route("/api/*").handler(JWTAuthHandler.create(jwtAuth))
                     router.route("/api/*").handler({
@@ -69,16 +70,16 @@ class SlickerVerticle : AbstractVerticle() {
                                          it.request().params().get("permission")
                         user?.isAuthorised(permission, fun(authResult) {
                             if(authResult.succeeded() && authResult.result()) {
-                                it.response().setStatusCode(200).end(JsonObject().put("success", true).put("permission", permission).encodePrettily())
+                                it.response().setStatusCode(200).end(json("success" to true, "permission" to permission).encodePrettily())
                             } else {
                                 if(authResult.failed()) {
                                     log.error("Auth result failed with error: ", authResult.cause())
                                 }
-                                it.response().setStatusCode(401).end(JsonObject().put("success", false).put("permission", permission).encodePrettily())
+                                it.response().setStatusCode(401).end(json("success" to false, "permission" to permission).encodePrettily())
                             }
                         })
                         if(user == null) {
-                            it.response().setStatusCode(401).end(JsonObject().put("success", false).put("permission", permission).encodePrettily())
+                            it.response().setStatusCode(401).end(json("success" to false, "permission" to permission).encodePrettily())
                         }
                     })
                     vertx.createHttpServer().requestHandler({ router.accept(it) }).listen(8000)

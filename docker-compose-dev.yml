@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  keycloak:
+    image: jboss/keycloak
+    environment:
+    - KEYCLOAK_USER=admin
+    - KEYCLOAK_PASSWORD=f00b@rIt
+    - PROXY_ADDRESS_FORWARDING=true
+    volumes:
+    - logs:/opt/jboss/keycloak/standalone/log
+    - keycloakdata:/opt/jboss/keycloak/standalone/data
+      
+
+volumes:
+  keycloakdata: {}
+  mongodata: {}
+  logs: {}

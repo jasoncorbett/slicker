@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/slicker.iml" filepath="$PROJECT_DIR$/.idea/modules/slicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/slicker_main.iml" filepath="$PROJECT_DIR$/.idea/modules/slicker_main.iml" group="slicker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/slicker_test.iml" filepath="$PROJECT_DIR$/.idea/modules/slicker_test.iml" group="slicker" />
     </modules>
   </component>
 </project>

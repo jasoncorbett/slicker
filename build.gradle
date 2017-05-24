@@ -63,7 +63,7 @@ shadowJar {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '2.13'
+  gradleVersion = '3.5'
 }
 
 // Heroku relies on the 'stage' task to deploy.

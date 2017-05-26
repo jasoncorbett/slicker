@@ -59,4 +59,7 @@ gradle/wrapper/gradle-wrapper.properties
 # auth directory
 /auth/
 
-
+./docker-compose-dev.yml
+dev-env/logs
+dev-env/nginx.conf
+dev-env/data

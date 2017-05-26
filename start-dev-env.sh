@@ -13,7 +13,7 @@ cd dev-env
 
 for TEMPLATE in *.template.*;
 do
-	REAL_CONF=`echo $TEMPLATE |perl -pe 's/\.template\.//'`
+	REAL_CONF=`echo $TEMPLATE |perl -pe 's/\.template//'`
 	if [ ! -e "$REAL_CONF" ]
 	then
 		cp "$TEMPLATE" "$REAL_CONF"

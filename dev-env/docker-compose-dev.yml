@@ -9,7 +9,7 @@ services:
     - PROXY_ADDRESS_FORWARDING=true
     volumes:
     - ./dev-env/logs:/opt/jboss/keycloak/standalone/log
-    - ./dev-env/keycloak-data:/opt/jboss/keycloak/standalone/data
+    - ./dev-env/data/keycloak:/opt/jboss/keycloak/standalone/data
 
   nginx:
     image: nginx

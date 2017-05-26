@@ -8,11 +8,15 @@ services:
     - KEYCLOAK_PASSWORD=f00b@rIt
     - PROXY_ADDRESS_FORWARDING=true
     volumes:
-    - logs:/opt/jboss/keycloak/standalone/log
-    - keycloakdata:/opt/jboss/keycloak/standalone/data
-      
+    - ./dev-env/logs:/opt/jboss/keycloak/standalone/log
+    - ./dev-env/keycloak-data:/opt/jboss/keycloak/standalone/data
 
+  nginx:
+    image: nginx
+    volumes:
+    - ./dev-env/nginx.conf:/etc/nginx/nginx.conf
+    - ./dev-env/logs:/var/log
+    links:
+    - keycloak
 volumes:
-  keycloakdata: {}
   mongodata: {}
-  logs: {}

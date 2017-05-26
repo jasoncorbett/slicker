@@ -20,7 +20,7 @@ do
 	fi
 done
 
-for MOUNTED_DIR in logs data/mongo data/keycloak;
+for MOUNTED_DIR in logs logs/nginx data/mongo data/keycloak;
 do
 	if [ ! -d "$MOUNTED_DIR" ];
 	then

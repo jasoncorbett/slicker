@@ -11,6 +11,16 @@ services:
     - ./dev-env/logs:/opt/jboss/keycloak/standalone/log
     - ./dev-env/data/keycloak:/opt/jboss/keycloak/standalone/data
 
+  gradle_build:
+    image: frekele/gradle:3.5-jdk8
+    volumes:
+    - .:/project
+    working_dir: /project
+    command: "gradle run"
+    links:
+    - keycloak
+
+
   nginx:
     image: nginx
     volumes:
@@ -20,5 +30,6 @@ services:
       - 8080:8080
     links:
     - keycloak
+    - gradle_build
 volumes:
   mongodata: {}

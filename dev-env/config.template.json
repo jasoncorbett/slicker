@@ -1,0 +1,6 @@
+{
+  "authentication": true,
+  "base-url": "http://localhost:8080/",
+  "keycloak-url": "http://keycloak:8080/auth",
+  "keycloak-realm": "master"
+}

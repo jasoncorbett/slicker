@@ -42,7 +42,9 @@ dependencies {
 
 // Redeploy watcher.
 run {
-  args = ['run', mainVerticleName,
+  args = ["run", mainVerticleName, 
+          "-Dvertx.disableDnsResolver=true",
+          "-conf", "dev-env/config.json",
           "--launcher-class=$mainClassName",
           "--redeploy=src/**/*.*",
           "--on-redeploy=./gradlew classes"

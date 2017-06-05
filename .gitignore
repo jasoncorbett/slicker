@@ -63,3 +63,4 @@ docker-compose-dev.yml
 dev-env/logs
 dev-env/nginx.conf
 dev-env/data
+dev-env/config.json
